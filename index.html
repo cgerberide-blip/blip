@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta name="theme-color" content="#7d3151">
+
+  <meta
+    name="description"
+    content="Un calendrier personnel simple pour borner les périodes."
+  >
+
+  <title>Blip</title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="192x192"
+    href="icons/icon-192.png"
+  >
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <main class="application">
+    <header class="entete">
+      <div class="titre-application">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Blip</h1>
+      </div>
+
+      <button
+        id="bouton-reglages"
+        class="bouton-icone"
+        type="button"
+        aria-label="Ouvrir les réglages"
+        title="Réglages"
+      >
+        ⚙
+      </button>
+    </header>
+
+    <section class="calendrier-carte" aria-label="Calendrier">
+      <div class="navigation-mois">
+        <button
+          id="mois-precedent"
+          class="bouton-navigation"
+          type="button"
+          aria-label="Afficher le mois précédent"
+        >
+          ‹
+        </button>
+
+        <button
+          id="titre-mois"
+          class="titre-mois"
+          type="button"
+          aria-label="Revenir au mois actuel"
+        ></button>
+
+        <button
+          id="mois-suivant"
+          class="bouton-navigation"
+          type="button"
+          aria-label="Afficher le mois suivant"
+        >
+          ›
+        </button>
+      </div>
+
+      <div class="jours-semaine" aria-hidden="true">
+        <span>Lun</span>
+        <span>Mar</span>
+        <span>Mer</span>
+        <span>Jeu</span>
+        <span>Ven</span>
+        <span>Sam</span>
+        <span>Dim</span>
+      </div>
+
+      <div
+        id="zone-calendrier"
+        class="zone-calendrier"
+        aria-live="polite"
+      >
+        <div id="grille-calendrier" class="grille-calendrier"></div>
+      </div>
+    </section>
+
+    <footer class="pied-application">
+      <p id="resume-selection" class="resume-selection"></p>
+
+      <button
+        id="bouton-aujourdhui"
+        class="bouton-aujourdhui"
+        type="button"
+      >
+        Aujourd’hui
+      </button>
+    </footer>
+    </main>
+
+  <div
+    id="fond-modal"
+    class="fond-modal"
+    hidden
+  >
+    <section
+      id="panneau-reglages"
+      class="panneau-reglages"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="titre-reglages"
+    >
+      <div class="entete-reglages">
+        <h2 id="titre-reglages">Réglages</h2>
+
+        <button
+          id="fermer-reglages"
+          class="bouton-fermer"
+          type="button"
+          aria-label="Fermer les réglages"
+        >
+          ×
+        </button>
+      </div>
+
+      <div class="contenu-reglages">
+        <section class="rubrique-reglages">
+          <h3>Sauvegarde</h3>
+
+          <p>
+            Les données sont enregistrées uniquement sur cet appareil.
+            Une sauvegarde permet de les transférer vers un autre
+            téléphone ou de les restaurer.
+          </p>
+
+          <button
+            id="exporter-donnees"
+            class="bouton-reglage bouton-principal"
+            type="button"
+          >
+            Exporter les données
+          </button>
+
+          <button
+            id="importer-donnees"
+            class="bouton-reglage"
+            type="button"
+          >
+            Importer une sauvegarde
+          </button>
+
+          <input
+            id="fichier-import"
+            type="file"
+            accept=".json,application/json"
+            hidden
+          >
+        </section>
+
+        <section class="rubrique-reglages">
+          <h3>Données</h3>
+
+          <p>
+            Cette opération supprimera toutes les dates actuellement
+            sélectionnées dans Blip.
+          </p>
+
+          <button
+            id="effacer-donnees"
+            class="bouton-reglage bouton-danger"
+            type="button"
+          >
+            Effacer toutes les données
+          </button>
+        </section>
+
+        <p
+          id="message-reglages"
+          class="message-reglages"
+          role="status"
+          aria-live="polite"
+        ></p>
+
+        <p class="version-application">
+          Blip · Version de développement
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
