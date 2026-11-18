@@ -405,14 +405,31 @@ function obtenirDatePourNomFichier() {
   const maintenant = new Date();
 
   const annee = maintenant.getFullYear();
+
   const mois = String(
     maintenant.getMonth() + 1
   ).padStart(2, "0");
+
   const jour = String(
     maintenant.getDate()
   ).padStart(2, "0");
 
-  return `${annee}-${mois}-${jour}`;
+  const heures = String(
+    maintenant.getHours()
+  ).padStart(2, "0");
+
+  const minutes = String(
+    maintenant.getMinutes()
+  ).padStart(2, "0");
+
+  const secondes = String(
+    maintenant.getSeconds()
+  ).padStart(2, "0");
+
+  return (
+    `${annee}-${mois}-${jour}-` +
+    `${heures}-${minutes}-${secondes}`
+  );
 }
 
 function exporterDonnees() {
