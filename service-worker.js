@@ -1,6 +1,6 @@
 "use strict";
 
-const VERSION_CACHE = "blip-v2";
+const VERSION_CACHE = "blip-v3";
 
 const FICHIERS_APPLICATION = [
   "./",
